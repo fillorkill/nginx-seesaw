@@ -4,8 +4,11 @@ nginx reverse proxy config for Seesaw
 # Files
 
 client.js - mirrors apis.google.com/js/client.js hosted locally to increase access speed and tweaked the url to load other js locally
+
 seesaw.conf - nginx main conf
+
 googleapis.conf - nginx conf for google apis
+
 gzip.conf - nginx conf to gzip responses for faster client download
 
 # Usage
