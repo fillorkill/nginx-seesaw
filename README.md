@@ -1,6 +1,13 @@
 # nginx-seesaw
 nginx reverse proxy config for Seesaw
 
+# Files
+
+client.js - mirrors apis.google.com/js/client.js hosted locally to increase access speed and tweaked the url to load other js locally
+seesaw.conf - nginx main conf
+googleapis.conf - nginx conf for google apis
+gzip.conf - nginx conf to gzip responses for faster client download
+
 # Usage
 Tested on nginx 1.10.3 on Ubuntu 16.04
 
@@ -11,7 +18,7 @@ You'll need a Linux machine ideally located in non-google-blocking destinations 
 
 `sudo openssl dhparam -out /etc/nginx/ssl/dhp-4096.pem 4096`
 
-3. Add dns A record for the following domains (replace with your actual domain):
+3. Add DNS A records for the following domains (replace with your actual domain):
 
 `ajax-googleapis.yourdomain.com`
 
@@ -32,6 +39,7 @@ You'll need a Linux machine ideally located in non-google-blocking destinations 
 `seesaw.yourdomain.com`
 
 and point them all to your server's external IP address
+
 4. replace yourdomain.com with your actual domain in the config by running (where xxx.com is your actual domain):
 
 `sed -i 's/yourdomain.com/xxx.com/g' googleapis.conf`
@@ -43,4 +51,5 @@ and point them all to your server's external IP address
 `sed -i 's/yourdomain.com/xxx.com/g' client.js`
 
 5. copy the seesaw.conf, googleapis.conf over to your nginx config directory, gzip.conf to /etc/nginx/, and client.js to /usr/share/nginx/googleapis/client.js
+
 6. reload nginx and visit https://seesaw.xxx.com to see the seesaw login page.
